@@ -26,7 +26,7 @@ describe("Plant previews", () => {
     if (!viewer) throw new Error("Missing viewer");
     fireEvent(viewer, new Event("load"));
     fireEvent.click(screen.getByRole("button", { name: "Place in My Room" }));
-    expect(screen.getByRole("status").textContent).toContain("Camera view isn't available");
+    expect(screen.getByRole("status").textContent).toContain("take a photo of the spot");
   });
   it("does not use another species for Peace Lily or Jade", () => {
     for (const id of ["peace-lily", "jade"]) expect(plants.find((plant) => plant.id === id)?.model.glb).toBe("");
