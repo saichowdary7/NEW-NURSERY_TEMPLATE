@@ -18,7 +18,8 @@ export function PlantDetails({ plant, mode, onModeChange, onClose, onContact, on
           <>
             <DialogTitle className="font-serif text-3xl">{plant.name} <span className="text-muted-foreground">in your space</span></DialogTitle>
             <DialogDescription className="sr-only">Interactive 3D and AR preview</DialogDescription>
-            <PlantARViewer key={plant.id} plant={plant} onSelect={onSelect} onBack={() => onModeChange("details")} />
+            {/* No key: switching plants must keep the camera view running. */}
+            <PlantARViewer plant={plant} onSelect={onSelect} onBack={() => onModeChange("details")} />
           </>
         ) : (
           <div className="grid gap-8 md:grid-cols-2">
