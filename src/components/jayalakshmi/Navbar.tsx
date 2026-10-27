@@ -68,9 +68,10 @@ export function Navbar() {
           </AnimatePresence>
         </button>
       </nav>
+      {/* Fade/slide only: animating height to "auto" makes Framer Motion restore the old scroll position, cancelling the menu link scroll. */}
       <AnimatePresence>
         {open && (
-          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden border-b border-border bg-background/95 backdrop-blur-md md:hidden">
+          <motion.div initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="overflow-hidden border-b border-border bg-background/95 backdrop-blur-md md:hidden">
             <ul className="flex flex-col px-5 py-4">
               {navItems.map((n, i) => (
                 <motion.li key={n.id} initial={{ x: -12, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: i * 0.04 }}>

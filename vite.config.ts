@@ -7,6 +7,9 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  // model-viewer is imported lazily when a plant preview opens; pre-bundle it so the dev server
+  // doesn't discover it late and serve a stale 404 for it.
+  vite: { optimizeDeps: { include: ["@google/model-viewer"] } },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this

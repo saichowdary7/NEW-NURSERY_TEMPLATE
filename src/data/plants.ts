@@ -8,10 +8,6 @@ import catOutdoor from "@/assets/cat-outdoor.jpg";
 import catFlowering from "@/assets/cat-flowering.jpg";
 import catFruit from "@/assets/cat-fruit.jpg";
 import catSucculent from "@/assets/cat-succulent.jpg";
-import monsteraModel from "@/assets/monstera.glb.asset.json";
-import arecaModel from "@/assets/areca.glb.asset.json";
-import snakeModel from "@/assets/snake.glb.asset.json";
-import fiddleModel from "@/assets/fiddle.glb.asset.json";
 
 export type CategoryId = "indoor" | "outdoor" | "flowering" | "fruit" | "succulents" | "air-purifying";
 
@@ -24,7 +20,7 @@ export const categories: { id: CategoryId; name: string; description: string; im
   { id: "air-purifying", name: "Air-Purifying Plants", description: "Easy companions loved for fresher-feeling rooms.", image: snake },
 ];
 
-// Species-specific CC0 Innerscene models; an empty source means no matching
+// Species-specific CC0 Innerscene models served from public/models/; an empty source means no matching
 // model is available yet. Never substitute another species for missing assets.
 
 export type Plant = {
@@ -48,7 +44,7 @@ export const plants: Plant[] = [
     categories: ["indoor"],
     description: "Iconic split leaves and a relaxed, sculptural form — a statement plant for living rooms.",
     light: "Bright, indirect light", water: "When the top 3–5 cm of soil is dry", height: "1.5–2.5 m indoors",
-    suitability: "Indoor", difficulty: "Easy", model: { glb: monsteraModel.url, isPlaceholder: false },
+    suitability: "Indoor", difficulty: "Easy", model: { glb: "/models/monstera.glb", isPlaceholder: false },
   },
   {
     id: "peace-lily", name: "Peace Lily", botanical: "Spathiphyllum wallisii", image: peaceLily,
@@ -62,14 +58,14 @@ export const plants: Plant[] = [
     categories: ["indoor", "outdoor", "air-purifying"],
     description: "Feathery, arching fronds that soften any room with a tropical feel.",
     light: "Bright, indirect light", water: "When the top layer of soil dries", height: "1.5–2 m indoors",
-    suitability: "Indoor & Outdoor", difficulty: "Moderate", model: { glb: arecaModel.url, isPlaceholder: false },
+    suitability: "Indoor & Outdoor", difficulty: "Moderate", model: { glb: "/models/areca.glb", isPlaceholder: false },
   },
   {
     id: "snake", name: "Snake Plant", botanical: "Dracaena trifasciata", image: snake,
     categories: ["indoor", "air-purifying", "succulents"],
     description: "Upright, architectural leaves; remarkably forgiving and drought tolerant.",
     light: "Low to bright light", water: "Every 2–4 weeks; let soil dry fully", height: "60–120 cm",
-    suitability: "Indoor & Outdoor", difficulty: "Easy", model: { glb: snakeModel.url, isPlaceholder: false },
+    suitability: "Indoor & Outdoor", difficulty: "Easy", model: { glb: "/models/snake.glb", isPlaceholder: false },
   },
   {
     id: "jade", name: "Jade Plant", botanical: "Crassula ovata", image: jade,
@@ -83,6 +79,6 @@ export const plants: Plant[] = [
     categories: ["indoor"],
     description: "Large, violin-shaped leaves on a slender trunk — a refined designer favourite.",
     light: "Bright, consistent indirect light", water: "When the top 5 cm is dry", height: "1.8–3 m indoors",
-    suitability: "Indoor", difficulty: "Needs attention", model: { glb: fiddleModel.url, isPlaceholder: false },
+    suitability: "Indoor", difficulty: "Needs attention", model: { glb: "/models/fiddle.glb", isPlaceholder: false },
   },
 ];

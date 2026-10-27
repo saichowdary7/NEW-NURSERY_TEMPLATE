@@ -10,7 +10,7 @@ describe("Plant previews", () => {
   it("has distinct models for Monstera, Areca, Snake and Fiddle, never a shared sample", () => {
     const ids = ["monstera", "areca", "snake", "fiddle"];
     const models = ids.map((id) => plants.find((plant) => plant.id === id)?.model.glb);
-    expect(models.every((src) => Boolean(src?.startsWith("/__l5e/assets-v1/")))).toBe(true);
+    expect(models.every((src) => Boolean(src?.startsWith("/models/")))).toBe(true);
     expect(new Set(models).size).toBe(4);
   });
   it("makes all six products selectable", async () => {
@@ -19,14 +19,14 @@ describe("Plant previews", () => {
     for (const plant of plants) fireEvent.click(screen.getByRole("button", { name: `Preview ${plant.name}` }));
     expect(select.mock.calls.map(([plant]) => plant.id)).toEqual(["monstera", "peace-lily", "areca", "snake", "jade", "fiddle"]);
   });
-  it("enables placement on load and reports unsupported devices instead of silently doing nothing", async () => {
+  it("enables placement on load and explains when neither AR nor the camera view is available", async () => {
     const { container } = render(<PlantARViewer plant={monstera} onBack={vi.fn()} onSelect={vi.fn()} />);
     await waitFor(() => expect(container.querySelector("model-viewer")).toBeTruthy());
     const viewer = container.querySelector("model-viewer");
     if (!viewer) throw new Error("Missing viewer");
     fireEvent(viewer, new Event("load"));
     fireEvent.click(screen.getByRole("button", { name: "Place in My Room" }));
-    expect(screen.getByRole("status").textContent).toContain("requires a supported phone");
+    expect(screen.getByRole("status").textContent).toContain("Camera view isn't available");
   });
   it("does not use another species for Peace Lily or Jade", () => {
     for (const id of ["peace-lily", "jade"]) expect(plants.find((plant) => plant.id === id)?.model.glb).toBe("");
