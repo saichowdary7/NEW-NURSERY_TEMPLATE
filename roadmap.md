@@ -1,0 +1,6 @@
+- [ ] Replace shared sample with verified species-specific models; show honest photo fallback for missing models.
+- [ ] Repair viewer loading and room-placement feedback; let visitors select all six plants in the preview.
+- [ ] Test model loading, product switching and unsupported-device feedback.
+- [ ] Replace artificial landing scene with real nursery footage and scroll-in zoom.
+- [ ] Show real watering footage in Services and remove the artificial scroll-story presentation.
+- [ ] Verify cinematic opening and Services at desktop and phone sizes.
